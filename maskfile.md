@@ -192,7 +192,6 @@ Remove-Item *.patch.gpg
 Remove-Item *.zip
 ```
 
-## update
 ## copy2win-patch
 
 > Copy patch to Windows
@@ -242,45 +241,15 @@ mask lint
 > Run lints
 
 ```bash
-mask selene-lint
-mask stylua-lint
 mask textlint
 mask typo-check
-mask pwsh-test
 mask shell-lint
 ```
 
 ```powershell
-mask selene-lint
-mask stylua-lint
 mask textlint
 mask typo-check
-mask pwsh-test
 mask shell-lint
-```
-
-## stylua-lint
-
-> Run stylua lint
-
-```bash
-stylua --check ./
-```
-
-```powershell
-stylua --check ./
-```
-
-## selene-lint
-
-> Run selene
-
-```bash
-selene .
-```
-
-```powershell
-selene .
 ```
 
 ## textlint
@@ -305,28 +274,6 @@ typos .
 
 ```powershell
 typos .
-```
-
-## pwsh-test
-
-> Run Invoke-PSScriptAnalyzer
-
-```bash
-echo "Run PowerShell ScriptAnalyzer"
-pwsh utils/pssa.ps1
-```
-
-```powershell
-Write-Output "Run PowerShell ScriptAnalyzer"
-Get-ChildItem -Recurse |
-    Where-Object {
-        $_.Name -match "\.ps1$" -and
-        $_.FullName -notmatch "\\node_modules\\"
-    } |
-    ForEach-Object {
-        Write-Output $_.FullName
-        Invoke-ScriptAnalyzer -Severity Warning $_.FullName
-    }
 ```
 
 ## shell-lint
@@ -360,25 +307,11 @@ mask format
 > Run format
 
 ```bash
-mask stylua-format
 mask shell-format
 ```
 
 ```powershell
-mask stylua-format
 mask shell-format
-```
-
-## stylua-format
-
-> Run stylua format
-
-```bash
-stylua ./
-```
-
-```powershell
-stylua ./
 ```
 
 ## shell-format

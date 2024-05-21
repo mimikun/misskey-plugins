@@ -68,17 +68,7 @@ test : lint
 
 ## Run lints
 .PHONY : lint
-lint : selene-lint stylua-lint textlint typo-check pwsh-test shell-lint
-
-## Run stylua lint
-.PHONY : stylua-lint
-stylua-lint :
-	stylua --check ./
-
-## Run selene
-.PHONY : selene-lint
-selene-lint :
-	selene .
+lint : textlint typo-check shell-lint
 
 ## Run textlint
 .PHONY : textlint
@@ -89,12 +79,6 @@ textlint :
 .PHONY : typo-check
 typo-check :
 	typos .
-
-## Run Invoke-PSScriptAnalyzer
-.PHONY : pwsh-test
-pwsh-test :
-	@echo "Run PowerShell ScriptAnalyzer"
-	@pwsh utils/pssa.ps1
 
 ## Run shellcheck
 .PHONY : shell-lint
@@ -107,12 +91,7 @@ fmt : format
 
 ## Run format
 .PHONY : format
-format : stylua-format shell-format
-
-## Run stylua format
-.PHONY : stylua-format
-stylua-format :
-	stylua ./
+format : shell-format
 
 ## Run shfmt
 .PHONY : shell-format
